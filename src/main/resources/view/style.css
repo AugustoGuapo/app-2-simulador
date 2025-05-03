@@ -1,0 +1,9 @@
+.table-view {
+    -fx-border-color: #cccccc;
+    -fx-border-radius: 5;
+}
+
+.button {
+    -fx-font-size: 14px;
+    -fx-padding: 8 16;
+}
