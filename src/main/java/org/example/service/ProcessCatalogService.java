@@ -5,10 +5,13 @@ import javafx.collections.ObservableList;
 import lombok.extern.slf4j.Slf4j;
 import org.example.model.Catalog;
 import org.example.model.Process;
-import org.example.model.ProcessState;
 
-
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 @Slf4j
 public class ProcessCatalogService implements AutoCloseable {
@@ -62,8 +65,7 @@ public class ProcessCatalogService implements AutoCloseable {
                 rs.getString("name"),
                 rs.getString("user"),
                 rs.getString("description"),
-                rs.getBoolean("priority"),
-                ProcessState.READY
+                rs.getBoolean("priority")
         );
     }
 
@@ -71,7 +73,7 @@ public class ProcessCatalogService implements AutoCloseable {
         if (conn != null) return;
 
         try {
-            conn = DriverManager.getConnection("jdbc:sqlite:process_catalogue.db");
+            conn = DriverManager.getConnection("jdbc:sqlite:C:\\Users\\Augusto\\Desktop\\newProcess\\db\\procesos.db");
             initializeDatabase();
         } catch (SQLException e) {
             log.error("Database connection error", e);

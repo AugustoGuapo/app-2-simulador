@@ -153,3 +153,29 @@ Caused by: java.lang.NoSuchMethodException: org.example.ui.controller.SimulatorC
 	at java.base/java.lang.Class.getDeclaredConstructor(Class.java:2930)
 	at javafx.fxml@21/javafx.fxml.FXMLLoader$ValueElement.processAttribute(FXMLLoader.java:941)
 	... 61 more
+2025-05-09 00:22:08 ERROR ProcessCatalogService:79 - Database connection error
+java.sql.SQLException: path to '"C:\Users\Augusto\Desktop\newProcess\db\procesos.db"': 'C:\Users\Augusto\Documents\sistemas operativos\simulador_de_procesos\"C:' does not exist
+	at org.sqlite.SQLiteConnection.open(SQLiteConnection.java:261)
+	at org.sqlite.SQLiteConnection.<init>(SQLiteConnection.java:67)
+	at org.sqlite.jdbc3.JDBC3Connection.<init>(JDBC3Connection.java:28)
+	at org.sqlite.jdbc4.JDBC4Connection.<init>(JDBC4Connection.java:19)
+	at org.sqlite.JDBC.createConnection(JDBC.java:106)
+	at org.sqlite.JDBC.connect(JDBC.java:79)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:683)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:253)
+	at org.example.service.ProcessCatalogService.connect(ProcessCatalogService.java:76)
+	at org.example.service.ProcessCatalogService.<init>(ProcessCatalogService.java:21)
+	at org.example.Main.main(Main.java:11)
+2025-05-09 00:22:30 ERROR ProcessCatalogService:79 - Database connection error
+java.sql.SQLException: opening db: 'C:\Users\Augusto\Desktop\newProcess\db\procesos.db"': El nombre de archivo, el nombre de directorio o la sintaxis de la etiqueta del volumen no son correctos
+	at org.sqlite.SQLiteConnection.open(SQLiteConnection.java:271)
+	at org.sqlite.SQLiteConnection.<init>(SQLiteConnection.java:67)
+	at org.sqlite.jdbc3.JDBC3Connection.<init>(JDBC3Connection.java:28)
+	at org.sqlite.jdbc4.JDBC4Connection.<init>(JDBC4Connection.java:19)
+	at org.sqlite.JDBC.createConnection(JDBC.java:106)
+	at org.sqlite.JDBC.connect(JDBC.java:79)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:683)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:253)
+	at org.example.service.ProcessCatalogService.connect(ProcessCatalogService.java:76)
+	at org.example.service.ProcessCatalogService.<init>(ProcessCatalogService.java:21)
+	at org.example.Main.main(Main.java:11)
