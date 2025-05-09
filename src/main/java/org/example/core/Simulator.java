@@ -6,6 +6,7 @@ import org.example.model.ProcessState;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
 
 public class Simulator {
     private final RoundRobinScheduler scheduler;
@@ -13,12 +14,15 @@ public class Simulator {
     private final ObservableList<Process> processes;
     private final int th;
     private boolean isRunning;
+    private Future<?> simulationTask;
+    private ExecutorService simulationExecutor;
 
     public Simulator(int quantumMs, ObservableList<Process> processes, int th) {
         this.scheduler = new RoundRobinScheduler(quantumMs);
         this.processes = processes;
         this.th = th;
         this.virtualThreadExecutor = Executors.newVirtualThreadPerTaskExecutor();
+        this.simulationExecutor = Executors.newSingleThreadExecutor();
     }
 
     public void startSimulation() {
@@ -26,20 +30,22 @@ public class Simulator {
             isRunning = true;
 
             // Inicializar procesos
+        if (!scheduler.hasPendingProcesses()) {
             for (Process process : processes) {
                 process.setState(ProcessState.READY);
                 process.setPendingCharacters(process.getDescription().length());
                 scheduler.addProcess(process);
             }
+        }
 
-            // Usar virtual threads para el bucle principal
-
+        simulationTask = simulationExecutor.submit(() -> {
             while (isRunning && scheduler.hasPendingProcesses()) {
                 Process currentProcess = scheduler.nextProcess();
                 if (currentProcess == null) continue;
 
                 executeProcess(currentProcess);
             }
+        });
 
         }
 
@@ -73,5 +79,8 @@ public class Simulator {
 
     public void pauseSimulation() {
         isRunning = false;
+        if (simulationTask != null) {
+            simulationTask.cancel(true);
+        }
     }
 }
