@@ -17,6 +17,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.example.model.Catalog;
 import org.example.model.Process;
 import org.example.service.ProcessCatalogService;
+import org.example.utils.StageUtils;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -49,16 +50,14 @@ public class CatalogueSelectorController {
             if (controller == null) {
                 throw new IllegalStateException("El controlador no fue inicializado");
             }
-
-            controller.initData(selectedCatalog);
-            selectCatalogBtn.setDisable(true);
+            Stage currentStage = StageUtils.getStageByEvent(event);
+            controller.initData(selectedCatalog, currentStage);
 
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
             stage.show();
 
-            Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            currentStage.close();
+            currentStage.hide();
         } catch (IOException e) {
             log.error("Error crítico al cargar FXML: ", e);
         } catch (IllegalStateException e) {

@@ -1,10 +1,16 @@
 package org.example.ui.controller;
 
-import lombok.Data;
+import javafx.event.Event;
+import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.stage.Stage;
+import org.example.utils.StageUtils;
 import org.example.model.Catalog;
 
 public class SimulatorController {
-    Catalog catalog;
+    @FXML public Button backButton;
+    private Catalog catalog;
+    private Stage previousStage;
 
     public SimulatorController(Catalog catalog) {
         this.catalog = catalog;
@@ -14,7 +20,14 @@ public class SimulatorController {
 
     }
 
-    public void initData(Catalog catalog) {
+    public void initData(Catalog catalog, Stage previousStage) {
         this.catalog = catalog;
+        this.previousStage = previousStage;
+    }
+
+    public void handleBack(Event event) {
+        Stage currentStage = StageUtils.getStageByEvent(event);
+        previousStage.show();
+        currentStage.close();
     }
 }
