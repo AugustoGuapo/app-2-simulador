@@ -14,4 +14,9 @@ public class Catalog {
     private int id ;
     private String name;
     private ObservableList<Process> processes;
+
+    @Override
+    public String toString() {
+        return name;
+    }
 }

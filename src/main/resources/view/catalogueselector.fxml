@@ -28,19 +28,10 @@
             <padding>
                 <Insets top="10.0" right="10.0" bottom="10.0" left="10.0"/>
             </padding>
-            <ComboBox fx:id="cataloguesComboBox" prefWidth="150">
-                <items>
-                    <FXCollections fx:factory="observableArrayList">
-                        <String fx:value="10"/>
-                        <String fx:value="20"/>
-                        <String fx:value="30"/>
-                        <String fx:value="40"/>
-                    </FXCollections>
-                </items>
-            </ComboBox>
+            <ComboBox fx:id="catalogsComboBox" prefWidth="150"/>
             <TableView fx:id="processesTable" prefHeight="400">
                 <columns>
-                    <TableColumn text="PID" prefWidth="80" fx:id="pidCol">
+                    <TableColumn text="PID" fx:id="pidCol">
                         <cellValueFactory>
                             <PropertyValueFactory property="pid"/>
                         </cellValueFactory>
@@ -55,7 +46,7 @@
                             <PropertyValueFactory property="user"/>
                         </cellValueFactory>
                     </TableColumn>
-                    <TableColumn text="Prioridad" prefWidth="80" fx:id="priorityCol">
+                    <TableColumn text="Prioridad" fx:id="priorityCol">
                         <cellValueFactory>
                             <PropertyValueFactory property="priority"/>
                         </cellValueFactory>
@@ -78,7 +69,7 @@
             <padding>
                 <Insets top="10.0" right="10.0" bottom="10.0" left="10.0"/>
             </padding>
-            <Button text="Iniciar" fx:id="btnIniciar" onAction="#startSimulation" />
+            <Button text="Seleccionar catálogo" fx:id="selectCatalogBtn" onAction="#startSimulation" />
         </HBox>
     </bottom>
 </BorderPane>
