@@ -1,14 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
+<BorderPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
-            fx:controller="org.example.ui.controller.SimulatorController"
-            prefHeight="400.0" prefWidth="600.0">
+            fx:controller="org.example.ui.controller.SimuladorController">
 
-</AnchorPane>
+    <!-- Título superior -->
+    <top>
+        <Label text="Vista de Simulación"
+               style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-padding: 10;" />
+    </top>
+
+    <!-- Cuerpo principal con secciones de procesos -->
+    <center>
+        <VBox spacing="10" padding="10">
+            <!-- Listos -->
+            <Label text="Listos" style="-fx-text-fill: blue; -fx-font-size: 16px;" />
+            <HBox fx:id="listosContainer" spacing="10" />
+            <Separator />
+
+            <!-- Ejecución -->
+            <Label text="Ejecucion" style="-fx-text-fill: green; -fx-font-size: 16px;" />
+            <HBox fx:id="ejecucionContainer" spacing="10" />
+            <Separator />
+
+            <!-- Espera -->
+            <Label text="Espera" style="-fx-text-fill: gray; -fx-font-size: 16px;" />
+            <HBox fx:id="esperaContainer" spacing="10" />
+            <Separator />
+
+            <!-- Terminado -->
+            <Label text="Terminado" style="-fx-text-fill: red; -fx-font-size: 16px;" />
+            <HBox fx:id="terminadoContainer" spacing="10" />
+            <Separator />
+        </VBox>
+    </center>
+</BorderPane>
