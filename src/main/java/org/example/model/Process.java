@@ -9,22 +9,21 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-
 public class Process {
     private int processCatalogueId;
-    private String catalogueName;
     private int pid;
     private String processName;
     private String user;
+    private String description;
     private boolean priority;
     private ObjectProperty<ProcessState> state = new SimpleObjectProperty<>();;
 
-    public Process(int processCatalogueId, String catalogueName, int pid, String processName, String user, boolean priority, ProcessState state) {
+    public Process(int processCatalogueId, int pid, String processName, String user, String description, boolean priority, ProcessState state) {
         this.processCatalogueId = processCatalogueId;
-        this.catalogueName = catalogueName;
         this.pid = pid;
         this.processName = processName;
         this.user = user;
+        this.description = description;
         this.priority = priority;
         this.state.set(state);
     }

@@ -9,7 +9,7 @@ import javafx.stage.Stage;
 public class MainApp extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("/view/simulator.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/view/catalogueselector.fxml"));
         primaryStage.setTitle("Simulador de Procesos - Round Robin");
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
