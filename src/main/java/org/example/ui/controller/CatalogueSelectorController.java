@@ -56,6 +56,7 @@ public class CatalogueSelectorController {
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
             stage.show();
+            controller.setStage(stage);
 
             Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             currentStage.close();

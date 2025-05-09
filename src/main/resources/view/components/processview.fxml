@@ -1,0 +1,15 @@
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.VBox?>
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      spacing="5"
+      prefWidth="300"
+      style="-fx-padding: 10; -fx-background-color: #ececec; -fx-border-color: gray; -fx-border-radius: 4;">
+
+    <Label fx:id="nameLabel" />
+    <Label fx:id="pidLabel" />
+    <Label fx:id="stateLabel" />
+    <Label fx:id="priorityLabel" />
+    <Label fx:id="charactersLeftLabel" />
+
+</VBox>

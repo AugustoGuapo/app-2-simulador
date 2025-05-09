@@ -14,6 +14,7 @@ public class Simulator {
     private final ObservableList<Process> processes;
     private final int th;
     private boolean isRunning;
+    private boolean alreadyStarted;
     private Future<?> simulationTask;
     private ExecutorService simulationExecutor;
 
@@ -29,8 +30,8 @@ public class Simulator {
             if (isRunning) return;
             isRunning = true;
 
-            // Inicializar procesos
-        if (!scheduler.hasPendingProcesses()) {
+        System.out.println(alreadyStarted);
+        if (!alreadyStarted) {
             for (Process process : processes) {
                 process.setState(ProcessState.READY);
                 process.setPendingCharacters(process.getDescription().length());
@@ -42,11 +43,10 @@ public class Simulator {
             while (isRunning && scheduler.hasPendingProcesses()) {
                 Process currentProcess = scheduler.nextProcess();
                 if (currentProcess == null) continue;
-
                 executeProcess(currentProcess);
             }
         });
-
+        alreadyStarted = true;
         }
 
 
@@ -80,7 +80,15 @@ public class Simulator {
     public void pauseSimulation() {
         isRunning = false;
         if (simulationTask != null) {
-            simulationTask.cancel(true);
+            simulationTask.cancel(false);
         }
+        System.out.println("Simulation paused.");
+        System.out.println("Scheduler state: " + scheduler.toString());
+    }
+
+    public void shutdown() {
+        pauseSimulation();
+        simulationExecutor.shutdownNow();
+        virtualThreadExecutor.shutdownNow();
     }
 }

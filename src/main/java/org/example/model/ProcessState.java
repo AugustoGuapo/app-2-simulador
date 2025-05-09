@@ -14,4 +14,9 @@ public enum ProcessState {
     public String getState() {
         return state;
     }
+
+    @Override
+    public String toString() {
+        return state;
+    }
 }

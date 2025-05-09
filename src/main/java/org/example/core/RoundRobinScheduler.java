@@ -1,10 +1,12 @@
 package org.example.core;
 
+import lombok.ToString;
 import org.example.model.Process;
 
 import java.util.LinkedList;
 import java.util.Queue;
 
+@ToString
 public class RoundRobinScheduler {
     private final Queue<Process> readyQueue = new LinkedList<>();
     private final int quantumMs;

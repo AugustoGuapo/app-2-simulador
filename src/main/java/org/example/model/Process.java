@@ -5,6 +5,7 @@ import javafx.beans.property.SimpleObjectProperty;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 import java.io.FileWriter;
 import java.io.IOException;
@@ -12,6 +13,7 @@ import java.io.IOException;
 @Getter
 @Setter
 @NoArgsConstructor
+@ToString
 public class Process implements Runnable {
     private int processCatalogueId;
     private int pid;

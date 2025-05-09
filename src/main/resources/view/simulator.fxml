@@ -12,7 +12,7 @@
 <BorderPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="org.example.ui.controller.SimulatorController"
-            prefHeight="600" prefWidth="800">
+            prefHeight="1000" prefWidth="1080">
 
     <!-- Título superior -->
     <top>
